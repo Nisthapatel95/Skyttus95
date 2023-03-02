@@ -1,0 +1,58 @@
+<form [formGroup]="userForm" (ngSubmit)="Submit()" class="row justify-content-center ">
+    <div class="col-6 border">
+        <div class="row  p-2 text">
+            <div class="col-md-12 col-lg-12 col-xl-12">
+
+
+                <div class="col-md-12 col-lg-12 col-xl-12 mt-2">
+                    <div class="col-md-12 col-lg-12 col-xl-12">
+                        <!-- property_Type_Code  -->
+                        <div class="form-outline">
+                            <label class="form-label fw-bold fs-12px" for="code">Code </label>
+                            <input type="text" id="code" class="form-control text   " placeholder="Enter Code"
+                                formControlName="code"
+                                [ngClass]="{ 'is-invalid': isFormSubmmited && userForm.controls['code'].errors?.['r'] }" />
+                            <div *ngIf="userForm.controls['code'].touched && (userForm.controls['code'].invalid )">
+                                <div class="text-danger" *ngIf="userForm.controls['code'].errors?.['required']">
+                                    Auction Category Code is required
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-12 col-lg-12 col-xl-12 mt-2">
+                <div class="col-md-12 col-lg-12 col-xl-12">
+                    <!-- property_Type_Name -->
+                    <div class="form-outline">
+                        <label class="form-label fw-bold fs-12px" for="name">Name </label>
+                        <input type="text" id="name" class="form-control text   " placeholder="Enter Name"
+                            formControlName="name" />
+                        <div *ngIf="userForm.controls['name'].touched && (userForm.controls['name'].invalid )">
+                            <div class="text-danger" *ngIf="userForm.controls['name'].errors?.['required']">
+                                Auction Category Name is required
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row  p-2 text">
+                <div class="col-md-12 col-lg-12 col-xl-12">
+                    <!-- property_Type_Description -->
+                    <div class="form-outline">
+                        <label class="form-label fw-bold fs-12px" for="">isActive </label><br>
+                        <mat-slide-toggle formControlName="isActive"></mat-slide-toggle>
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="d-grid d-flex  justify-content-center">
+                <button cButton color="success" class="btn btn-primary " type="submit" (click)="onSubmit()"
+                    [disabled]="userForm.invalid" (ngSubmit)="Submit()">Submit</button>
+            </div>
+        </div>
+    </div>
+</form>
